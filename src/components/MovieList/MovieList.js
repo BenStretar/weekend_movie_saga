@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 class MovieList extends Component {
     render(){
         return(
-            <div>
-
+            <div className="movieCard">
+                <h1>title</h1>
+                <p>description</p>
             </div>
         )
     }
 }
 
-export default MovieList;
+export default connect()(MovieList);
