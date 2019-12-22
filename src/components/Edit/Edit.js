@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
 class Edit extends Component {
+
+    //cancel change and takes user back to details
+    cancelChange = () => {
+        this.props.history.push('/details');
+    }
+
+    
+
     render(){
         return(
             <div>
