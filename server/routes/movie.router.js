@@ -12,6 +12,8 @@ router.get('/', (req, res) => {
         console.log('Error getting movies from the database: ', error);
         res.sendStatus(400)
     })
-})
+});
+
+
 
 module.exports = router;

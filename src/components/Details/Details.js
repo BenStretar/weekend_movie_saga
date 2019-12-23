@@ -8,7 +8,7 @@ class Details extends Component {
     }
 
     //takes user to edit page
-    editPage = () => {
+    editPage = (event, id) => {
         this.props.history.push('/edit');
     }
 
@@ -16,10 +16,27 @@ class Details extends Component {
         return(
             <div>
                 <button onClick={this.backToList}>Back to List</button>
-                <button onClick={this.editPage}>Edit</button>
+                <button onClick={(event) => this.editPage(event, this.props.details[0])}>Edit</button>
+                {this.props.details.map((movies, i)=>{
+                    return (
+                        <div key={i}>
+                            <h2>{movies.title}</h2>
+                            <p>{movies.description}</p>
+                        </div>
+                    )
+                })}
+                <h2>Genres</h2>
+                <ul>
+                    {this.props.genres.map((genres, i)=>{
+                        return <li key={i}>{genres.name}</li>
+                    })}
+                </ul>
             </div>
         )
     }
 }
 
-export default Details;
+export default connect(reduxState=>(
+    {details: reduxState.details,
+    genres: reduxState.genres}
+    ))(Details);
