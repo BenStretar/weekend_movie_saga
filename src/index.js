@@ -16,7 +16,19 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('GET_MOVIES', getMoviesSaga);
     yield takeEvery('GET_GENRES', getGenresSaga);
-    yield takeEvery('GET_DETAILS', getDetailsSaga)
+    yield takeEvery('GET_DETAILS', getDetailsSaga);
+    yield takeEvery('EDIT_DETAILS', editDetails);
+}
+
+function* editDetails(action){
+    let id = action.payload.id
+    try{
+        const getResponse = yield axios.get(`/movies/${id}`)
+        yield put({type: 'EDIT_DETAILS', payload: getResponse.data})
+    }
+    catch(error){
+        console.log('error editing movie details', error)
+    }
 }
 
 function* getMoviesSaga(action){
@@ -81,6 +93,8 @@ const details = (state = [], action) => {
             return state;
     }
 }
+
+
 
 // Create one store that all components can use
 const storeInstance = createStore(
