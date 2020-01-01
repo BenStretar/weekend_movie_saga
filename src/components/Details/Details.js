@@ -36,7 +36,7 @@ class Details extends Component {
     }
 }
 
-export default connect(reduxState=>(
-    {details: reduxState.details,
-    genres: reduxState.genres}
+export default connect(reduxStore=>(
+    {details: reduxStore.details,
+    genres: reduxStore.genres}
     ))(Details);

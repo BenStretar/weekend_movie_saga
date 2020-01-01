@@ -26,9 +26,7 @@ class Edit extends Component {
         this.props.dispatch({ type: 'GET_DETAILS', payload: {id: this.state.id}})
         this.props.history.push('/details')
     }
-
-    
-
+  
     render(){
         return(
             <div>
@@ -45,5 +43,5 @@ class Edit extends Component {
     }
 }
 
-export default connect(reduxState=>(
-    {details: reduxState.details}))(Edit);
+export default connect(reduxStore=>(
+    {details: reduxStore.details}))(Edit);
