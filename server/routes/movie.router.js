@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res)=>{
     const id = [req.params.id]
     let queryString = `
-    SELECT "id", "title", "description" FROM "moives"
+    SELECT "id", "title", "description" FROM "movies"
     WHERE id=$1;`;
     pool.query(queryString, id).then(result =>{
         res.send(result.rows);
