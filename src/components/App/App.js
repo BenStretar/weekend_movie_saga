@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+//import { connect } from 'react-redux';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Details from '../Details/Details';
@@ -11,9 +11,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>Empty Page</p>
+        <p>Pick a Movie!</p>
         <Router>
-          <Route path='/' component={MovieList}/>
+          <Route exact path='/' component={MovieList}/>
           <Route path='/details' component={Details} />
           <Route path='/edit' component={Edit}/>
         </Router>
@@ -22,4 +22,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default App;

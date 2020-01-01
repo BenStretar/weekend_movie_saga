@@ -17,11 +17,11 @@ class Details extends Component {
             <div>
                 <button onClick={this.backToList}>Back to List</button>
                 <button onClick={(event) => this.editPage(event, this.props.details[0])}>Edit</button>
-                {this.props.details.map((movies, i)=>{
+                {this.props.details.map((details, i)=>{
                     return (
                         <div key={i}>
-                            <h2>{movies.title}</h2>
-                            <p>{movies.description}</p>
+                            <h2>{details.title}</h2>
+                            <p>{details.description}</p>
                         </div>
                     )
                 })}

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class MovieList extends Component {
@@ -19,7 +20,12 @@ class MovieList extends Component {
                     return (
                         <div key={i}>
                             <h2>{movies.title}</h2>
-                            <img onClick={(event) => this.toDetails(event, movies.id)} alt={movies.title} />
+                            <Link to='/details'>
+                            <img onClick={(event) => this.toDetails(event, movies.id)} 
+                            alt={movies.title} src={movies.poster} /> </Link>
+                            <p>{movies.description}</p>
+
+                            <h3>Movie Description</h3>
                             <p>{movies.description}</p>
                         </div>
                     )
