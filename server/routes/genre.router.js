@@ -4,7 +4,7 @@ const pool = require('../modules/pool')
 const router = express.Router();
 
 //return all genres
-router.get('/:id', (req, res) => {
+router.get(`/:id`, (req, res) => {
     const id = [req.params.id]
     let queryString = `
         SELECT "genres"."name"

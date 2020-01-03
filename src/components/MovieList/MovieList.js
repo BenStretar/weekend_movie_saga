@@ -23,7 +23,6 @@ class MovieList extends Component {
                             <Link to='/details'>
                             <img onClick={(event) => this.toDetails(event, movies.id)} 
                             alt={movies.title} src={movies.poster} /> </Link>
-                            <p>{movies.description}</p>
 
                             <h3>Movie Description</h3>
                             <p>{movies.description}</p>

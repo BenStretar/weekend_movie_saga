@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 
 // Get specific movie details from click
-router.get('/:id', (req, res)=>{
+router.get(`/:id`, (req, res)=>{
     const id = [req.params.id]
     let queryString = `
     SELECT "id", "title", "description" FROM "movies"
@@ -24,14 +24,14 @@ router.get('/:id', (req, res)=>{
     pool.query(queryString, id).then(result =>{
         res.send(result.rows);
     }).catch(error =>{
-        console.log('Error getting movie id', error);
+        console.log('---------Error getting movie id---------', error);
         res.sendStatus(400)
     });
 })
 
 //edit movies and update database
-router.put('/:id', (req, res)=>{
-    const id = [req.params.id]
+router.put(`/:id`, (req, res)=>{
+    const id = req.params.id
     let title = req.body.title;
     let description = req.body.description;
     let queryString = `

@@ -23,8 +23,9 @@ function* rootSaga() {
 function* editDetails(action){
     let id = action.payload.id
     try{
-        const getResponse = yield axios.get(`/movies/${id}`)
-        yield put({type: 'EDIT_DETAILS', payload: getResponse.data})
+        //const getResponse = 
+        yield axios.put(`/movie/${id}`) // changed to put from get
+        //yield put({type: 'EDIT_DETAILS', payload: getResponse.data})
     }
     catch(error){
         console.log('error editing movie details', error)
@@ -33,7 +34,7 @@ function* editDetails(action){
 
 function* getMoviesSaga(action){
     try{
-        const getResponse = yield axios.get('/movies');
+        const getResponse = yield axios.get('/movie');
         yield put({type: 'SET_MOVIES', payload: getResponse.data})
     }
     catch(error){
@@ -43,8 +44,8 @@ function* getMoviesSaga(action){
 
 function* getDetailsSaga(action){
     try{
-        const getResponse = yield axios.get(`/movies/${action.payload.id}`)
-        yield put({type: 'GET_DETAILS', payload: getResponse.data})
+        const getResponse = yield axios.get(`/movie/${action.payload.id}`)
+        yield put({type: 'SET_DETAILS', payload: getResponse.data}) // changed from GET
     }
     catch(error){
         console.log('error getting details', error);
@@ -54,8 +55,8 @@ function* getDetailsSaga(action){
 // gets the movies genres from the server 
 function* getGenresSaga(action){
     try{
-        const getResponse = yield axios.get(`/genres/${action.payload.id}`)
-        yield put ({type: 'GET_GENRES', payload: getResponse.data})
+        const getResponse = yield axios.get(`/genre/${action.payload.id}`)
+        yield put ({type: 'SET_GENRES', payload: getResponse.data}) // changed from GET
     }
     catch(error){
         console.log('error getting genres', error)
