@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 class Edit extends Component {
 
     state = {
-        id: this.props.details[0].id,
         title: '',
-        description: ''
+        description: '',
+        id: this.props.details[0].id,
     }
 
     //cancel change and takes user back to details
@@ -33,6 +33,7 @@ class Edit extends Component {
                 <p>You are updating: {this.props.details[0].title}</p>
                 <input type="text" lable="title" placeholder="Update Title" 
                 onChange={(event) => this.handleChange(event, 'title')} />
+                
                 <input type="text" lable="description" placeholder="Update Description" 
                 onChange={(event) => this.handleChange(event, 'description')} />
 
@@ -43,5 +44,6 @@ class Edit extends Component {
     }
 }
 
-export default connect(reduxStore=>(
-    {details: reduxStore.details}))(Edit);
+export default connect(reduxStore=>({
+    details: reduxStore.details
+}))(Edit);

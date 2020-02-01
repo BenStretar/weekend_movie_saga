@@ -37,7 +37,7 @@ router.put(`/:id`, (req, res)=>{
     let queryString = `
     UPDATE "movies" SET "title"=$1, "description"=$2 
     WHERE id=$3;`;
-    pool.query(queryString, [id, title, description]).then(result =>{
+    pool.query(queryString, [title, description, id]).then(result =>{
         res.sendStatus(200);
     }).catch(error=>{
         console.log('Error updating selected movie', error);
